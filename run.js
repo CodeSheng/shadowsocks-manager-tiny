@@ -31,8 +31,8 @@ if(runParams.indexOf('python') >= 0) {
   type = 'python';
   const tempPassword = 'qwerASDF' + Math.random().toString().substr(2, 8);
   shadowsocks = spawn('ssserver', ['-m', method, '-p', '65535', '-k', tempPassword, '--manager-address', ssConfig ]);
-} else if(pluginOpts.indexOf('obfs') >= 0) {
-  shadowsocks = spawn('ss-manager', [ '-m', method, '-u', '--manager-address', ssConfig , '--plugin', 'obfs-server', '--plugin-opts', pluginOpts]);
+} else if(pluginOpts ==='http' || pluginOpts === 'tls') {
+  shadowsocks = spawn('ss-manager', [ '-m', method, '-u', '--manager-address', ssConfig , '--plugin', 'obfs-server', '--plugin-opts', '\"obfs=' + pluginOpts + '\"']);
 }else{
   shadowsocks = spawn('ss-manager', [ '-m', method, '-u', '--manager-address', ssConfig ]);
 }
