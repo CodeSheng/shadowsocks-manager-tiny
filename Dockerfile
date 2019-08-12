@@ -6,6 +6,7 @@ ENV SS_URL=https://github.com/shadowsocks/shadowsocks-libev/releases/download/v$
 
 ENV SIMPLE_OBFS_VER=0.0.5
 
+COPY . /root/shadowsocks-manager-tiny
 
 RUN set -ex && \
     apk add --no-cache --virtual .build-deps \
@@ -45,8 +46,7 @@ RUN set -ex && \
     rm -rf /tmp/*  && \
 	apk --no-cache add tzdata iproute2  && \
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &&  \
-    echo "Asia/Shanghai" > /etc/timezone  &&  \
-    git clone https://github.com/CodeSheng/shadowsocks-manager-tiny 
+    echo "Asia/Shanghai" > /etc/timezone   
 
 WORKDIR /root/shadowsocks-manager-tiny 
 
