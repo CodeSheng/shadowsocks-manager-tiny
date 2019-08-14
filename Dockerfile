@@ -50,4 +50,4 @@ RUN set -ex && \
 
 WORKDIR /root/shadowsocks-manager-tiny 
 
-CMD [ "node", "inde.js" ]
+CMD [ "node" ]
